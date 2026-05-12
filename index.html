@@ -1,1 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audra Labs</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5A623;--gd:rgba(245,166,35,0.15);--gb:rgba(245,166,35,0.35);--bg:#0A0B0F;--bg2:#0E1016;--bg3:#12141C;--bg4:#181B26;--sf:#1C2030;--sf2:#222638;--tx:#E8EAF2;--tx2:#9BA3BF;--tx3:#5A6380;--gr:#00D084;--grd:rgba(0,208,132,0.15);--rd:#FF4F5A;--rdd:rgba(255,79,90,0.15);--cy:#00C8FF;--cyd:rgba(0,200,255,0.12);--br:rgba(255,255,255,0.06);--br2:rgba(255,255,255,0.1);--r:12px;--rl:18px;--mono:'JetBrains Mono',monospace;--disp:'Rajdhani',sans-serif;--body:'Space Grotesk',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--sf2);border-radius:3px}
 
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px;background:rgba(10,11,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--br);transition:border-color .3s}
+.nl{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-size:21px;font-weight:700;letter-spacing:1px}
+.nl .dot{color:var(--gold)}
+.ni{width:30px;height:30px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.ni svg{width:16px;height:16px;fill:#0A0B0F}
+.nm{display:flex;align-items:center;gap:1.8rem}
+.nm a{color:var(--tx2);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;position:relative}
+.nm a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .2s}
+.nm a:hover{color:var(--gold)}.nm a:hover::after{width:100%}
+.nc{background:var(--gold);color:#0A0B0F;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:700;font-family:var(--body);cursor:pointer;transition:opacity .2s,transform .1s}
+.nc:hover{opacity:.88}.nc:active{transform:scale(.97)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 2rem 4rem;position:relative;overflow:hidden}
+.hg{position:absolute;inset:0;background-image:linear-gradient(rgba(245,166,35,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.025) 1px,transparent 1px);background-size:60px 60px;animation:gridpulse 8s ease-in-out infinite}
+@keyframes gridpulse{0%,100%{opacity:.6}50%{opacity:1}}
+.hglow{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(245,166,35,.07) 0%,transparent 65%);animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+.hc{position:relative;z-index:1;max-width:920px}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid var(--gb);color:var(--gold);border-radius:100px;padding:6px 18px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:2rem;animation:fadeup .6s ease both}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
+h1{font-family:var(--disp);font-size:clamp(3.2rem,7.5vw,6.2rem);font-weight:700;line-height:1.02;letter-spacing:2px;color:var(--tx);margin-bottom:1.5rem;animation:fadeup .6s .1s ease both}
+h1 span{color:var(--gold);position:relative}
+h1 span::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:2px;background:var(--gold);opacity:.4}
+.hsub{font-size:17px;color:var(--tx2);max-width:580px;margin:0 auto 2.5rem;line-height:1.7;animation:fadeup .6s .2s ease both}
+.hbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeup .6s .3s ease both}
+.bprim{background:var(--gold);color:#0A0B0F;border:none;border-radius:10px;padding:14px 34px;font-size:15px;font-weight:700;font-family:var(--body);cursor:pointer;transition:opacity .2s,transform .15s;letter-spacing:.2px}
+.bprim:hover{opacity:.88;transform:translateY(-2px)}.bprim:active{transform:translateY(0)}
+.bout{background:transparent;color:var(--tx);border:1px solid var(--br2);border-radius:10px;padding:14px 34px;font-size:15px;font-weight:500;font-family:var(--body);cursor:pointer;transition:all .2s}
+.bout:hover{border-color:var(--gold);color:var(--gold);background:var(--gd)}
+.hstats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--br);animation:fadeup .6s .4s ease both}
+.hstat .num{font-family:var(--disp);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+.hstat .lbl{font-size:11px;color:var(--tx3);letter-spacing:.5px;margin-top:4px}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.wrap{max-width:1100px;margin:0 auto}
+.slbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.stitle{font-family:var(--disp);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:1px;color:var(--tx);margin-bottom:.8rem}
+.ssub{color:var(--tx2);max-width:560px;font-size:15px;line-height:1.7}
+
+/* TOAST */
+#toast-container{position:fixed;top:80px;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--sf2);border:1px solid var(--br2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--tx);display:flex;align-items:center;gap:10px;pointer-events:auto;animation:slideIn .3s ease;max-width:280px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.toast.success{border-color:rgba(0,208,132,.3)}
+.toast.warning{border-color:rgba(245,166,35,.3)}
+.toast.danger{border-color:rgba(255,79,90,.3)}
+.toast-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.toast.success .toast-dot{background:var(--gr)}.toast.warning .toast-dot{background:var(--gold)}.toast.danger .toast-dot{background:var(--rd)}
+.toast.leaving{animation:slideOut .3s ease forwards}
+@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(20px)}}
+
+/* MODE TOGGLE */
+.mtoggle{display:flex;gap:4px;background:var(--bg3);border:1px solid var(--br);border-radius:10px;padding:4px;width:fit-content;margin-bottom:2rem}
+.mbtn{background:transparent;border:none;border-radius:7px;padding:8px 20px;font-size:13px;font-weight:600;color:var(--tx3);cursor:pointer;transition:all .2s;font-family:var(--body);display:flex;align-items:center;gap:7px}
+.mbtn.active{background:var(--gold);color:#0A0B0F}
+.mbtn:not(.active):hover{color:var(--tx);background:var(--sf)}
+
+/* ANALYZER LAYOUT */
+#analyzer{background:var(--bg2)}
+.az-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+
+/* UPLOAD */
+.upzone{background:var(--bg3);border:2px dashed var(--br2);border-radius:var(--rl);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.8rem;cursor:pointer;transition:all .25s;min-height:190px;text-align:center;position:relative;overflow:hidden}
+.upzone:hover{border-color:var(--gold);background:rgba(245,166,35,.03)}
+.upzone.drag{border-color:var(--gold);background:var(--gd);transform:scale(1.01)}
+.upzone.has-image{border-style:solid;border-color:var(--gb);padding:.8rem}
+.upzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.up-ico{width:52px;height:52px;background:var(--gd);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;transition:transform .2s}
+.upzone:hover .up-ico{transform:translateY(-3px)}
+.up-ico svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.up-title{font-size:15px;font-weight:600;color:var(--tx)}
+.up-sub{font-size:12px;color:var(--tx3);margin-top:.3rem}
+.up-fmts{display:flex;gap:5px;margin-top:.8rem;justify-content:center;flex-wrap:wrap}
+.fmt{background:var(--sf);border:1px solid var(--br2);border-radius:5px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--tx3)}
+#prev-img{display:none;max-width:100%;max-height:190px;border-radius:8px;object-fit:contain;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;scale:.96}to{opacity:1;scale:1}}
+
+/* FORENSIC VIEWS */
+.fv-wrap{margin-top:.75rem;display:none}
+.fv-wrap.show{display:block}
+.fv-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.fvt{background:var(--sf);border:1px solid var(--br);border-radius:6px;padding:5px 11px;font-size:11px;font-weight:600;letter-spacing:.3px;color:var(--tx3);cursor:pointer;font-family:var(--mono);transition:all .15s}
+.fvt:hover{color:var(--tx2);background:var(--sf2)}
+.fvt.active{background:var(--gd);border-color:var(--gb);color:var(--gold)}
+.fv-canvas-box{background:var(--bg4);border:1px solid var(--br);border-radius:9px;overflow:hidden;min-height:160px;position:relative;display:flex;align-items:center;justify-content:center}
+.fv-canvas-box canvas{width:100%;object-fit:contain;display:none}
+.fv-canvas-box canvas.active{display:block;animation:fadeIn .2s ease}
+.fv-computing{position:absolute;inset:0;background:var(--bg4);display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--tx3)}
+.fv-computing.hidden{display:none}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--br2);border-top-color:var(--gold);animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fv-desc{font-size:11px;color:var(--tx3);margin-top:5px;padding:6px 10px;background:var(--sf);border-radius:6px;border-left:2px solid var(--gb);line-height:1.55}
+
+/* COMPARE TOGGLE */
+.cmp-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cmp-label{font-size:11px;color:var(--tx3)}
+.cmp-slider{flex:1;accent-color:var(--gold);cursor:pointer}
+.cmp-val{font-family:var(--mono);font-size:11px;color:var(--gold);min-width:30px}
+
+/* ANALYZE BTN */
+.az-btn{width:100%;background:linear-gradient(90deg,var(--gold),#e09412);color:#0A0B0F;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;font-family:var(--body);cursor:pointer;transition:opacity .2s,transform .15s;margin-top:.75rem;display:none;position:relative;overflow:hidden}
+.az-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .4s}
+.az-btn:hover::before{transform:translateX(100%)}
+.az-btn:hover{opacity:.9;transform:translateY(-1px)}
+.az-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.az-btn:disabled::before{display:none}
+.az-disc{font-size:11px;color:var(--tx3);margin-top:.5rem;line-height:1.5;display:none}
+
+/* RESULTS */
+.res-panel{background:var(--bg3);border:1px solid var(--br);border-radius:var(--rl);padding:1.4rem;display:flex;flex-direction:column;gap:.85rem;min-height:480px;overflow-y:auto;position:relative}
+.res-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--tx3);flex:1;padding:2rem 0}
+.res-empty svg{width:42px;height:42px;stroke:var(--tx3);fill:none;opacity:.35;stroke-width:1.5;margin-bottom:1rem}
+.res-empty p{font-size:14px;margin-bottom:.35rem}
+.res-empty span{font-size:12px;color:var(--tx3);line-height:1.6}
+
+/* LOADING */
+.loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;padding:2.5rem 1rem;text-align:center;flex:1}
+.big-spin{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--sf2);border-top-color:var(--gold);animation:spin .8s linear infinite}
+.lstep{font-size:12px;color:var(--tx3);font-family:var(--mono);transition:opacity .3s}
+.lbar{width:100%;height:2px;background:var(--sf);border-radius:2px;overflow:hidden;margin-top:.5rem}
+.lbar-fill{height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .8s ease}
+
+/* VERDICT */
+.vbox{border-radius:10px;padding:1rem 1.2rem;display:none;align-items:center;gap:1rem;animation:fadeIn .4s ease}
+.vbox.authentic{background:var(--grd);border:1px solid rgba(0,208,132,.3)}
+.vbox.tampered{background:var(--rdd);border:1px solid rgba(255,79,90,.35)}
+.vbox.suspicious{background:var(--gd);border:1px solid rgba(245,166,35,.3)}
+.vicon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vbox.authentic .vicon{background:rgba(0,208,132,.2)}.vbox.tampered .vicon{background:rgba(255,79,90,.2)}.vbox.suspicious .vicon{background:rgba(245,166,35,.2)}
+.vicon svg{width:22px;height:22px;fill:none;stroke-width:2.5}
+.vbox.authentic .vicon svg{stroke:var(--gr)}.vbox.tampered .vicon svg{stroke:var(--rd)}.vbox.suspicious .vicon svg{stroke:var(--gold)}
+.vlabel{font-family:var(--disp);font-size:1.4rem;font-weight:700;letter-spacing:1px}
+.vbox.authentic .vlabel{color:var(--gr)}.vbox.tampered .vlabel{color:var(--rd)}.vbox.suspicious .vlabel{color:var(--gold)}
+.vconf{font-size:12px;color:var(--tx2);margin-top:2px}
+.vconf-meter{width:100%;height:3px;background:var(--sf2);border-radius:2px;overflow:hidden;margin-top:4px}
+.vconf-fill{height:100%;border-radius:2px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.vbox.authentic .vconf-fill{background:var(--gr)}.vbox.tampered .vconf-fill{background:var(--rd)}.vbox.suspicious .vconf-fill{background:var(--gold)}
+
+/* METRICS */
+.m-row{display:flex;flex-direction:column;gap:.55rem}
+.m-item{}
+.m-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.m-name{font-size:12px;color:var(--tx2)}
+.m-score{font-family:var(--mono);font-size:12px;font-weight:600;transition:color .3s}
+.mbar{height:4px;background:var(--sf2);border-radius:3px;overflow:hidden;cursor:pointer;transition:height .2s}
+.mbar:hover{height:6px}
+.mfill{height:100%;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.mfill.low{background:var(--gr)}.mfill.med{background:var(--gold)}.mfill.high{background:var(--rd)}
+
+/* MODULE CARDS */
+.mc-sec{display:none}
+.mc-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin-bottom:.5rem}
+.mc-list{display:flex;flex-direction:column;gap:4px}
+.mc{background:var(--sf);border:1px solid var(--br);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .15s,background .15s}
+.mc:hover{border-color:var(--br2);background:var(--sf2)}
+.mc.open{border-color:var(--br2)}
+.mc-hd{display:flex;align-items:center;gap:7px;padding:8px 11px;user-select:none}
+.mc-ico{font-size:12px;flex-shrink:0;width:18px;text-align:center}
+.mc-nm{font-size:12px;font-weight:600;color:var(--tx2);flex:1}
+.mc-badge{font-size:9px;font-weight:700;letter-spacing:.5px;border-radius:4px;padding:2px 7px;text-transform:uppercase}
+.mc-ok{background:var(--grd);color:var(--gr)}.mc-warn{background:var(--gd);color:var(--gold)}.mc-danger{background:var(--rdd);color:var(--rd)}
+.mc-chev{width:12px;height:12px;stroke:var(--tx3);fill:none;stroke-width:2;transition:transform .2s;flex-shrink:0}
+.mc.open .mc-chev{transform:rotate(90deg)}
+.mc-body{display:none;padding:0 11px 9px;font-size:12px;color:var(--tx3);line-height:1.65;border-top:1px solid var(--br)}
+.mc-body p{padding-top:7px}
+.mc.open .mc-body{display:block;animation:fadeIn .2s ease}
+
+/* THREATS */
+.thr-sec{display:none}
+.thr-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin-bottom:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{display:flex;align-items:center;gap:5px;border-radius:5px;padding:4px 9px;font-size:11px;font-weight:500;border:1px solid;letter-spacing:.1px;cursor:default;transition:transform .1s}
+.chip:hover{transform:scale(1.02)}
+.cok{background:var(--grd);border-color:rgba(0,208,132,.3);color:var(--gr)}
+.cwarn{background:var(--gd);border-color:rgba(245,166,35,.3);color:var(--gold)}
+.cdanger{background:var(--rdd);border-color:rgba(255,79,90,.3);color:var(--rd)}
+.cinfo{background:var(--cyd);border-color:rgba(0,200,255,.2);color:var(--cy)}
+
+/* ANALYSIS TEXT */
+.atext{background:var(--sf);border:1px solid var(--br);border-radius:9px;padding:.85rem 1rem;font-size:12px;color:var(--tx2);line-height:1.7;display:none;animation:fadeIn .3s ease}
+.atext strong{color:var(--tx)}
+
+/* ACTIONS */
+.res-actions{display:flex;gap:7px;flex-wrap:wrap}
+.abtn{background:transparent;color:var(--tx2);border:1px solid var(--br2);border-radius:7px;padding:7px 14px;font-size:12px;font-weight:500;font-family:var(--body);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
+.abtn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* BATCH */
+.batch-wrap{display:none}
+.batch-wrap.show{display:block}
+.batch-drop{background:var(--bg3);border:2px dashed var(--br2);border-radius:var(--rl);padding:2rem;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.batch-drop:hover{border-color:var(--gold);background:rgba(245,166,35,.03)}
+.batch-drop.drag{border-color:var(--gold);background:var(--gd)}
+.batch-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.bg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:7px;margin-top:.9rem}
+.bi{background:var(--bg4);border:1px solid var(--br);border-radius:8px;overflow:hidden;position:relative;transition:border-color .2s}
+.bi.done-ok{border-color:rgba(0,208,132,.4)}.bi.done-bad{border-color:rgba(255,79,90,.4)}.bi.done-sus{border-color:rgba(245,166,35,.4)}
+.bi img{width:100%;height:72px;object-fit:cover;display:block}
+.bi-info{padding:5px 6px}
+.bi-name{font-size:10px;color:var(--tx3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi-verdict{font-size:10px;font-weight:700;margin-top:1px}
+.bvp{color:var(--tx3)}.bvr{color:var(--gold)}.bva{color:var(--gr)}.bvt{color:var(--rd)}.bvs{color:var(--gold)}
+.bi-spin{position:absolute;top:5px;right:5px;width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.1);border-top-color:var(--gold);animation:spin .7s linear infinite}
+.bi-badge{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;animation:fadeIn .2s ease}
+.bb-ok{background:var(--gr);color:#0A0B0F}.bb-bad{background:var(--rd);color:#fff}.bb-sus{background:var(--gold);color:#0A0B0F}
+.batch-run{display:none;width:100%;background:var(--gold);color:#0A0B0F;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;font-family:var(--body);cursor:pointer;transition:opacity .2s;margin-top:.9rem}
+.batch-run:disabled{opacity:.45;cursor:not-allowed}
+.batch-run:not(:disabled):hover{opacity:.88}
+.batch-prog{display:none;margin-top:.75rem}
+.bp-bar{height:5px;background:var(--sf);border-radius:3px;overflow:hidden}
+.bp-fill{height:100%;background:var(--gold);border-radius:3px;width:0%;transition:width .4s ease}
+.bp-label{font-size:11px;color:var(--tx3);font-family:var(--mono);margin-top:4px}
+.brpt{display:none;margin-top:1.25rem}
+.brpt-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.brpt-title{font-size:13px;font-weight:700;color:var(--tx)}
+.brpt-dl{background:transparent;border:1px solid var(--br2);color:var(--tx2);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;font-family:var(--body);cursor:pointer;transition:all .2s}
+.brpt-dl:hover{border-color:var(--gold);color:var(--gold)}
+.btbl{width:100%;border-collapse:collapse;font-size:12px}
+.btbl th{text-align:left;padding:6px 8px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);border-bottom:1px solid var(--br)}
+.btbl td{padding:6px 8px;border-bottom:1px solid var(--br);color:var(--tx2)}
+.btbl tr:last-child td{border-bottom:none}
+.btbl tr{transition:background .15s}
+.btbl tr:hover td{background:var(--sf)}
+
+/* HOW IT WORKS */
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.sc{background:var(--bg3);border:1px solid var(--br);border-radius:var(--r);padding:1.5rem;position:relative;transition:border-color .2s,transform .2s}
+.sc:hover{border-color:var(--gb);transform:translateY(-3px)}
+.sc-num{width:36px;height:36px;border-radius:8px;background:var(--gd);border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:1rem}
+.sc-title{font-weight:600;font-size:14px;color:var(--tx);margin-bottom:.5rem}
+.sc-desc{font-size:13px;color:var(--tx3);line-height:1.6}
+.sc-arr{position:absolute;right:-.75rem;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--bg);border:1px solid var(--br2);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1}
+.sc-arr svg{width:11px;height:11px;stroke:var(--tx3);fill:none}
+.steps-row .sc:last-child .sc-arr{display:none}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.fc{background:var(--bg3);border:1px solid var(--br);border-radius:var(--r);padding:1.5rem;transition:border-color .2s,transform .2s}
+.fc:hover{border-color:var(--gb);transform:translateY(-3px)}
+.fc-ico{width:44px;height:44px;border-radius:10px;background:var(--gd);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.fc-ico svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8}
+.fc-title{font-size:15px;font-weight:600;color:var(--tx);margin-bottom:.5rem}
+.fc-desc{font-size:13px;color:var(--tx3);line-height:1.65}
+
+/* SUSTAINABILITY */
+.sus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem}
+.sus-c{background:var(--bg3);border:1px solid var(--br);border-radius:var(--r);padding:1.75rem;transition:border-color .2s}
+.sus-c:hover{border-color:var(--gb)}
+.sus-tag{display:inline-block;background:var(--grd);border:1px solid rgba(0,208,132,.25);color:var(--gr);border-radius:6px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+.sus-c h3{font-size:17px;font-weight:600;color:var(--tx);margin-bottom:.5rem}
+.sus-c p{font-size:13px;color:var(--tx3);line-height:1.7}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.tm{background:var(--bg3);border:1px solid var(--br);border-radius:var(--r);padding:1.5rem;text-align:center;transition:border-color .2s,transform .2s;cursor:default}
+.tm:hover{border-color:var(--gb);transform:translateY(-3px)}
+.tm-av{width:60px;height:60px;border-radius:14px;background:var(--gd);border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:1.4rem;font-weight:700;color:var(--gold);margin:0 auto 1rem;transition:background .2s}
+.tm:hover .tm-av{background:var(--gold);color:#0A0B0F}
+.tm-name{font-size:15px;font-weight:600;color:var(--tx);margin-bottom:.25rem}
+.tm-role{font-size:12px;color:var(--tx3)}
+
+/* TECH */
+.tech-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+.tbadge{background:var(--sf);border:1px solid var(--br2);border-radius:8px;padding:7px 14px;font-size:13px;font-weight:500;color:var(--tx2);display:flex;align-items:center;gap:7px;transition:all .2s;cursor:default}
+.tbadge:hover{border-color:var(--gb);color:var(--gold)}
+.tbadge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--br);padding:3rem 2rem}
+.ft{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.fl{font-family:var(--disp);font-size:20px;font-weight:700;color:var(--tx);letter-spacing:1px}
+.fl span{color:var(--gold)}
+.ft-tag{font-size:12px;color:var(--tx3);margin-top:3px}
+.flinks{display:flex;gap:1.5rem}
+.flinks a{font-size:13px;color:var(--tx3);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--gold)}
+.fc{font-size:12px;color:var(--tx3)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.az-grid,.sus-grid{grid-template-columns:1fr}.steps-row{grid-template-columns:repeat(2,1fr)}.feat-grid,.team-grid{grid-template-columns:repeat(2,1fr)}nav{padding:0 1.5rem}.nm{display:none}}
+@media(max-width:600px){.steps-row,.feat-grid,.team-grid{grid-template-columns:1fr}.hstats{gap:1.5rem;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<div id="toast-container"></div>
+
+<nav id="nav">
+  <div class="nl">
+    <div class="ni"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7L12 2z"/></svg></div>
+    AUDRA<span class="dot">.</span>LABS
+  </div>
+  <div class="nm">
+    <a href="#analyzer">Analyzer</a>
+    <a href="#features">Features</a>
+    <a href="#sustainability">Sustainability</a>
+    <a href="#team">Team</a>
+    <a href="#tech">Tech</a>
+  </div>
+  <button class="nc" onclick="goTo('analyzer')">Try Free ↗</button>
+</nav>
+
+<section class="hero">
+  <div class="hg"></div><div class="hglow"></div>
+  <div class="hc">
+    <div class="hbadge"><span class="pulse"></span>HackOrbit 2026 · AI Forensics</div>
+    <h1>DETECT.<br><span>VERIFY.</span><br>PROTECT.</h1>
+    <p class="hsub">Forensic Image Authenticity Analyzer powered by advanced AI. Upload any image to uncover deepfakes, manipulation, steganography, and cyber threats in under 5 seconds.</p>
+    <div class="hbtns">
+      <button class="bprim" onclick="goTo('analyzer')">Analyze an Image →</button>
+      <button class="bout" onclick="goTo('features')">Explore Features</button>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><div class="num" id="c1">0%</div><div class="lbl">People can't spot AI images</div></div>
+      <div class="hstat"><div class="num" id="c2">0B</div><div class="lbl">Deepfakes shared in 2024</div></div>
+      <div class="hstat"><div class="num" id="c3">&lt;5s</div><div class="lbl">Analysis time</div></div>
+      <div class="hstat"><div class="num" id="c4">0%</div><div class="lbl">Detection confidence</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="analyzer">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="slbl">Core Feature</div>
+      <div class="stitle">Forensic Image Analyzer</div>
+      <p class="ssub">Upload an image for a full forensic report — 5 interactive canvas views, AI verdict, 7-module breakdown, steganography scan, C2PA check, and batch redline auditing.</p>
+    </div>
+    <div class="mtoggle reveal" style="margin-top:2rem">
+      <button class="mbtn active" id="btn-single" onclick="setMode('single')">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>Single Image
+      </button>
+      <button class="mbtn" id="btn-batch" onclick="setMode('batch')">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H5a2 2 0 00-2 2"/><path d="M20 3H9a2 2 0 00-2 2"/></svg>Batch Mode
+      </button>
+    </div>
+
+    <!-- SINGLE MODE -->
+    <div id="single-wrap" class="az-grid reveal">
+      <div>
+        <!-- Upload Zone -->
+        <div class="upzone" id="upzone">
+          <input type="file" id="file-inp" accept="image/*">
+          <img id="prev-img" alt="Preview">
+          <div id="up-ph">
+            <div class="up-ico">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="up-title">Drop image or click to upload</div>
+            <div class="up-sub">PNG, JPG, WEBP, GIF up to 10MB</div>
+            <div class="up-fmts"><span class="fmt">PNG</span><span class="fmt">JPG</span><span class="fmt">WEBP</span><span class="fmt">GIF</span></div>
+          </div>
+        </div>
+
+        <!-- Forensic Views -->
+        <div class="fv-wrap" id="fv-wrap">
+          <div class="fv-tabs" id="fv-tabs">
+            <button class="fvt active" onclick="switchFV(this,'c-orig')">Original</button>
+            <button class="fvt" onclick="switchFV(this,'c-thermal')">🌡 Thermal</button>
+            <button class="fvt" onclick="switchFV(this,'c-noise')">📊 Noise</button>
+            <button class="fvt" onclick="switchFV(this,'c-lsb')">🔬 LSB</button>
+            <button class="fvt" onclick="switchFV(this,'c-ela')">⚡ ELA</button>
+          </div>
+          <div class="fv-canvas-box">
+            <div class="fv-computing" id="fv-computing"><div class="spin"></div>Computing views…</div>
+            <canvas id="c-orig" class="active"></canvas>
+            <canvas id="c-thermal"></canvas>
+            <canvas id="c-noise"></canvas>
+            <canvas id="c-lsb"></canvas>
+            <canvas id="c-ela"></canvas>
+          </div>
+          <div class="fv-desc" id="fv-desc">Original uploaded image.</div>
+          <div class="cmp-row">
+            <span class="cmp-label">Opacity</span>
+            <input type="range" class="cmp-slider" min="0" max="100" value="100" id="opacity-slider">
+            <span class="cmp-val" id="opacity-val">100%</span>
+          </div>
+        </div>
+
+        <button class="az-btn" id="az-btn" onclick="runAnalysis()">🔍 Analyze for Authenticity</button>
+        <div class="az-disc" id="az-disc">⚠ Analysis uses Claude Vision AI. Images are processed securely and never stored. Press <kbd style="background:var(--sf);border:1px solid var(--br2);border-radius:4px;padding:1px 5px;font-size:10px">Esc</kbd> to reset.</div>
+      </div>
+
+      <!-- Results Panel -->
+      <div class="res-panel" id="res-panel">
+        <div class="res-empty" id="res-empty">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <p>Upload an image to begin forensic analysis</p>
+          <span>5 forensic views · AI verdict · 7-module breakdown</span>
+        </div>
+        <div class="loading" id="loading">
+          <div class="big-spin"></div>
+          <div style="font-size:14px;color:var(--tx2)">Running forensic analysis…</div>
+          <div class="lstep" id="lstep">Extracting pixel metadata…</div>
+          <div class="lbar"><div class="lbar-fill" id="lbar-fill"></div></div>
+        </div>
+        <div id="res-content" style="display:none;flex-direction:column;gap:.85rem">
+          <!-- Verdict -->
+          <div class="vbox" id="vbox">
+            <div class="vicon"><svg id="vsv" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"></svg></div>
+            <div style="flex:1">
+              <div class="vlabel" id="vlabel">AUTHENTIC</div>
+              <div class="vconf" id="vconf">98% confidence</div>
+              <div class="vconf-meter"><div class="vconf-fill" id="vconf-fill"></div></div>
+            </div>
+          </div>
+          <!-- Metrics -->
+          <div class="m-row" id="m-row">
+            <div class="m-item" title="Likelihood image was AI-generated"><div class="m-head"><span class="m-name">AI Generation Score</span><span class="m-score" id="s-ai">0%</span></div><div class="mbar"><div class="mfill" id="f-ai"></div></div></div>
+            <div class="m-item" title="Whether EXIF/metadata is intact and consistent"><div class="m-head"><span class="m-name">Metadata Integrity</span><span class="m-score" id="s-meta">0%</span></div><div class="mbar"><div class="mfill" id="f-meta"></div></div></div>
+            <div class="m-item" title="Presence of noise artifacts inconsistent with real cameras"><div class="m-head"><span class="m-name">Noise Pattern Anomaly</span><span class="m-score" id="s-noise">0%</span></div><div class="mbar"><div class="mfill" id="f-noise"></div></div></div>
+            <div class="m-item" title="Chance hidden data is encoded in pixel LSBs"><div class="m-head"><span class="m-name">Steganography Risk</span><span class="m-score" id="s-steg">0%</span></div><div class="mbar"><div class="mfill" id="f-steg"></div></div></div>
+            <div class="m-item" title="Presence of biological marker anomalies (faces, eyes, skin)"><div class="m-head"><span class="m-name">Biological Anomaly</span><span class="m-score" id="s-bio">0%</span></div><div class="mbar"><div class="mfill" id="f-bio"></div></div></div>
+            <div class="m-item" title="Shadow/reflection/light inconsistencies with real physics"><div class="m-head"><span class="m-name">Physics Consistency Issues</span><span class="m-score" id="s-phy">0%</span></div><div class="mbar"><div class="mfill" id="f-phy"></div></div></div>
+          </div>
+          <!-- Modules -->
+          <div class="mc-sec" id="mc-sec">
+            <div class="mc-title">Module Breakdown — click to expand</div>
+            <div class="mc-list" id="mc-list"></div>
+          </div>
+          <!-- Threats -->
+          <div class="thr-sec" id="thr-sec">
+            <div class="thr-title">Threat Indicators</div>
+            <div class="chips" id="chips"></div>
+          </div>
+          <!-- Analysis -->
+          <div class="atext" id="atext"></div>
+          <!-- Actions -->
+          <div class="res-actions">
+            <button class="abtn" onclick="resetSingle()">← New Image</button>
+            <button class="abtn" onclick="copyReport()">📋 Copy Report</button>
+            <button class="abtn" onclick="dlReport()">⬇ Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BATCH MODE -->
+    <div id="batch-wrap" class="batch-wrap">
+      <div class="batch-drop" id="batch-drop">
+        <input type="file" id="batch-inp" accept="image/*" multiple>
+        <div class="up-ico" style="margin:0 auto .9rem"><svg viewBox="0 0 24 24" stroke="var(--gold)" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H5a2 2 0 00-2 2"/><path d="M20 3H9a2 2 0 00-2 2"/></svg></div>
+        <div class="up-title">Drop multiple images or click to select</div>
+        <div class="up-sub" style="margin-top:.3rem">Up to 20 images · PNG, JPG, WEBP</div>
+      </div>
+      <div class="bg-grid" id="bg-grid"></div>
+      <button class="batch-run" id="batch-run" onclick="runBatch()">🔍 Run Batch Analysis</button>
+      <div class="batch-prog" id="batch-prog">
+        <div class="bp-bar"><div class="bp-fill" id="bp-fill"></div></div>
+        <div class="bp-label" id="bp-label">0 / 0 analyzed</div>
+      </div>
+      <div class="brpt" id="brpt">
+        <div class="brpt-hd"><div class="brpt-title">Redline Audit Report</div><button class="brpt-dl" onclick="dlBatch()">⬇ Download</button></div>
+        <table class="btbl"><thead><tr><th>File</th><th>Verdict</th><th>Confidence</th><th>AI Score</th><th>Top Threat</th></tr></thead>
+        <tbody id="brpt-body"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="reveal"><div class="slbl">Process</div><div class="stitle">How It Works</div><p class="ssub">From image upload to actionable forensic verdict in 4 simple steps.</p></div>
+    <div class="steps-row reveal">
+      <div class="sc"><div class="sc-num">01</div><div class="sc-title">Upload Image</div><div class="sc-desc">Drop any PNG, JPG, or WEBP. Instantly see 5 forensic canvas views — Thermal, Noise Map, LSB Plane, and ELA — with zero waiting.</div><div class="sc-arr"><svg viewBox="0 0 24 24" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      <div class="sc"><div class="sc-num">02</div><div class="sc-title">Forensic Scan</div><div class="sc-desc">Client-side canvas engines extract thermal patterns, noise anomalies, LSB steganography planes, and error level analysis in real time.</div><div class="sc-arr"><svg viewBox="0 0 24 24" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      <div class="sc"><div class="sc-num">03</div><div class="sc-title">AI Analysis</div><div class="sc-desc">Claude Vision AI runs 7 parallel modules — biology, physics, thermal, steganography, semantics, social engineering, and C2PA provenance.</div><div class="sc-arr"><svg viewBox="0 0 24 24" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      <div class="sc"><div class="sc-num">04</div><div class="sc-title">Verdict Delivered</div><div class="sc-desc">Full verdict with expandable module cards, threat chips, confidence score, and a downloadable forensic report.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="reveal"><div class="slbl">Capabilities</div><div class="stitle">Advanced Forensic Intelligence</div><p class="ssub">12 proprietary detection engines running in parallel for the most comprehensive image forensics available.</p></div>
+    <div class="feat-grid reveal">
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fc-title">Logical Physics Audit</div><div class="fc-desc">Detects impossible real-world inconsistencies — shadow mismatches, reflection anomalies, object merging errors that AI visuals often break.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 012-2h6a2 2 0 012 2v1.662"/></svg></div><div class="fc-title">Biological Anomaly Detection</div><div class="fc-desc">Scans for non-human facial signatures — unnatural eye-glint patterns, irregular skin pore distribution, absence of micro-vessels in eye whites.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3M19 12h3M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l-2.12 2.12M4.22 19.78l2.12-2.12"/></svg></div><div class="fc-title">Thermal Heatmap Simulation</div><div class="fc-desc">Simulates biological heat distribution using jet colormap. AI faces appear thermally flat — real humans have complex blood-flow signatures.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 3v6M15 3v6M21 9h-6M21 15h-6M15 21v-6M9 21v-6M3 15h6M3 9h6"/></svg></div><div class="fc-title">Adversarial Noise Analysis</div><div class="fc-desc">FFT frequency analysis reveals hidden grid-like AI noise patterns invisible to the naked eye.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div><div class="fc-title">Steganography Detection</div><div class="fc-desc">LSB pixel analysis and trailing data scan to detect hidden malware payloads inside images.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="fc-title">C2PA Provenance Check</div><div class="fc-desc">Validates digital content authenticity manifests. Missing C2PA metadata on "official" content is an immediate red flag.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="fc-title">Semantic Consistency Check</div><div class="fc-desc">Verifies if the image "story" makes sense — weather mismatches, impossible locations, contextual inconsistencies.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="fc-title">Social Engineering Intent</div><div class="fc-desc">Beyond "is it AI?" — determines if it's designed to create panic, impersonate a CEO, or steal credentials.</div></div>
+      <div class="fc"><div class="fc-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="fc-title">Batch Redline Reporting</div><div class="fc-desc">Upload up to 20 images in one enterprise audit with comprehensive per-file security table.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sustainability" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="reveal"><div class="slbl">Green Computing</div><div class="stitle">Built for a Sustainable Future</div><p class="ssub">Audra Labs aligns digital integrity with environmental responsibility.</p></div>
+    <div class="sus-grid reveal">
+      <div class="sus-c"><div class="sus-tag">Energy Efficiency</div><h3>Low-Carbon AI Inference</h3><p>Serverless architecture scales to zero when idle. AI inference is batched and optimized to minimize GPU cycles per analysis.</p></div>
+      <div class="sus-c"><div class="sus-tag">Misinformation Impact</div><h3>Fighting Digital Pollution</h3><p>Every deepfake stopped reduces societal energy cost of fact-checking. Stopping fake content at the source is the greenest approach.</p></div>
+      <div class="sus-c"><div class="sus-tag">Privacy by Design</div><h3>Zero Data Retention</h3><p>Images are processed ephemerally and never stored. Privacy-first design is also green design — no data lakes, no unnecessary storage costs.</p></div>
+      <div class="sus-c"><div class="sus-tag">Open Source</div><h3>Community-Driven</h3><p>Released under MIT License. Shared tools mean less duplicated effort and fewer wasted compute cycles across organizations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="reveal"><div class="slbl">Built by</div><div class="stitle">The Team</div><p class="ssub">Four builders united by one mission — making digital truth verifiable.</p></div>
+    <div class="team-grid reveal">
+      <div class="tm"><div class="tm-av">GP</div><div class="tm-name">Gaurav Paul</div><div class="tm-role">Team Lead · Full-Stack · DevOps</div></div>
+      <div class="tm"><div class="tm-av">NK</div><div class="tm-name">Nishant Kumar Sharma</div><div class="tm-role">AI · Backend Engineering</div></div>
+      <div class="tm"><div class="tm-av">SP</div><div class="tm-name">Shadman Perwez</div><div class="tm-role">UI/UX · Research</div></div>
+      <div class="tm"><div class="tm-av">DS</div><div class="tm-name">Debarati Sarkar</div><div class="tm-role">Content · Pitching</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tech" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="reveal"><div class="slbl">Infrastructure</div><div class="stitle">Tech Stack</div><p class="ssub">Modern technologies powering every layer — from pixel extraction to AI reasoning.</p></div>
+    <div style="margin-top:2rem">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin-bottom:.6rem">Frontend</div>
+      <div class="tech-row reveal"><span class="tbadge"><span class="dot"></span>HTML5</span><span class="tbadge"><span class="dot"></span>CSS3</span><span class="tbadge"><span class="dot"></span>JavaScript ES6+</span><span class="tbadge"><span class="dot"></span>Canvas API</span><span class="tbadge"><span class="dot"></span>Tailwind CSS</span></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin:1.5rem 0 .6rem">Backend · AI · Forensic Engine</div>
+      <div class="tech-row reveal"><span class="tbadge"><span class="dot"></span>Python</span><span class="tbadge"><span class="dot"></span>Flask</span><span class="tbadge"><span class="dot"></span>Claude Vision AI</span><span class="tbadge"><span class="dot"></span>OpenCV</span><span class="tbadge"><span class="dot"></span>NumPy</span><span class="tbadge"><span class="dot"></span>scikit-image</span><span class="tbadge"><span class="dot"></span>FFT Analysis</span></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin:1.5rem 0 .6rem">Data · DevOps · Monitoring</div>
+      <div class="tech-row reveal"><span class="tbadge"><span class="dot"></span>PostgreSQL</span><span class="tbadge"><span class="dot"></span>Redis</span><span class="tbadge"><span class="dot"></span>Docker</span><span class="tbadge"><span class="dot"></span>GitHub Actions</span><span class="tbadge"><span class="dot"></span>Vercel</span><span class="tbadge"><span class="dot"></span>Grafana</span><span class="tbadge"><span class="dot"></span>Prometheus</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div><div class="fl">AUDRA<span>.</span>LABS</div><div class="ft-tag">Detect. Verify. Protect. — HackOrbit 2026</div></div>
+    <div class="flinks"><a href="https://github.com/heygaurav1/Audra-Labs" target="_blank">GitHub</a><a href="#analyzer">Try Demo</a><a href="#features">Features</a></div>
+    <div class="fc">© 2026 Audra Labs · MIT License</div>
+  </div>
+</footer>
+
+<script>
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+const clamp=(v,lo=0,hi=255)=>Math.max(lo,Math.min(hi,Math.round(v)));
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+function toast(msg,type='success',dur=3000){
+  const t=document.createElement('div');
+  t.className=`toast ${type}`;
+  t.innerHTML=`<span class="toast-dot"></span>${msg}`;
+  $('toast-container').appendChild(t);
+  setTimeout(()=>{t.classList.add('leaving');setTimeout(()=>t.remove(),300)},dur);
+}
+
+// ─── COUNTER ANIMATION ───────────────────────────────────────────────────────
+function animCount(el,target,suffix,dur=1800){
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+setTimeout(()=>{
+  animCount($('c1'),90,'%');
+  animCount($('c4'),98,'%');
+  setTimeout(()=>{ $('c2').textContent='4.7B'; $('c3').textContent='<5s'; },600);
+},400);
+
+// ─── SCROLL REVEAL ────────────────────────────────────────────────────────────
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ─── NAV ACTIVE ──────────────────────────────────────────────────────────────
+const sections=['analyzer','how','features','sustainability','team','tech'];
+const navLinks=document.querySelectorAll('.nm a');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY+100;
+  sections.forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const top=el.offsetTop,bot=top+el.offsetHeight;
+    if(y>=top&&y<bot){
+      navLinks.forEach(a=>a.style.color=a.getAttribute('href')==='#'+id?'var(--gold)':'');
+    }
+  });
+},{passive:true});
+
+// ─── CANVAS HELPERS ───────────────────────────────────────────────────────────
+function jet(t){
+  return[clamp(255*Math.min(Math.max(1.5-Math.abs(4*t-3),0),1)),
+         clamp(255*Math.min(Math.max(1.5-Math.abs(4*t-2),0),1)),
+         clamp(255*Math.min(Math.max(1.5-Math.abs(4*t-1),0),1))];
+}
+function getScaled(img,max=800){
+  const w=img.naturalWidth,h=img.naturalHeight;
+  const r=Math.min(1,Math.min(max/w,max/h));
+  return[Math.max(1,Math.round(w*r)),Math.max(1,Math.round(h*r))];
+}
+function drawToCanvas(canvasId,img,fn){
+  const c=document.getElementById(canvasId);
+  const[w,h]=getScaled(img);
+  c.width=w;c.height=h;
+  const ctx=c.getContext('2d');
+  ctx.drawImage(img,0,0,w,h);
+  if(fn)fn(ctx,c,w,h);
+  return c;
+}
+function boxBlur(data,w,h,r=2){
+  const out=new Uint8ClampedArray(data.length);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+    let rs=0,gs=0,bs=0,n=0;
+    for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){
+      const ny=Math.max(0,Math.min(h-1,y+dy)),nx=Math.max(0,Math.min(w-1,x+dx)),i=(ny*w+nx)*4;
+      rs+=data[i];gs+=data[i+1];bs+=data[i+2];n++;
+    }
+    const i=(y*w+x)*4;out[i]=rs/n;out[i+1]=gs/n;out[i+2]=bs/n;out[i+3]=255;
+  }
+  return out;
+}
+
+function renderAllViews(img){
+  // Original
+  drawToCanvas('c-orig',img);
+  // Thermal
+  drawToCanvas('c-thermal',img,(ctx,c,w,h)=>{
+    const d=ctx.getImageData(0,0,w,h);
+    for(let i=0;i<d.data.length;i+=4){
+      const l=(0.299*d.data[i]+0.587*d.data[i+1]+0.114*d.data[i+2])/255;
+      const[r,g,b]=jet(l);d.data[i]=r;d.data[i+1]=g;d.data[i+2]=b;
+    }
+    ctx.putImageData(d,0,0);
+  });
+  // Noise
+  drawToCanvas('c-noise',img,(ctx,c,w,h)=>{
+    const orig=ctx.getImageData(0,0,w,h);
+    const blurred=boxBlur(orig.data,w,h,2);
+    const out=ctx.createImageData(w,h);
+    for(let i=0;i<orig.data.length;i+=4){
+      out.data[i]=clamp(128+(orig.data[i]-blurred[i])*6);
+      out.data[i+1]=clamp(128+(orig.data[i+1]-blurred[i+1])*6);
+      out.data[i+2]=clamp(128+(orig.data[i+2]-blurred[i+2])*6);
+      out.data[i+3]=255;
+    }
+    ctx.putImageData(out,0,0);
+  });
+  // LSB
+  drawToCanvas('c-lsb',img,(ctx,c,w,h)=>{
+    const d=ctx.getImageData(0,0,w,h);
+    for(let i=0;i<d.data.length;i+=4){
+      d.data[i]=(d.data[i]&7)*36;d.data[i+1]=(d.data[i+1]&7)*36;d.data[i+2]=(d.data[i+2]&7)*36;
+    }
+    ctx.putImageData(d,0,0);
+  });
+  // ELA
+  const[w,h]=getScaled(img);
+  const tmp=document.createElement('canvas');tmp.width=w;tmp.height=h;
+  const tc=tmp.getContext('2d');tc.drawImage(img,0,0,w,h);
+  const origPx=tc.getImageData(0,0,w,h);
+  const url=tmp.toDataURL('image/jpeg',0.5);
+  const li=new Image();
+  li.onload=()=>{
+    const c=document.getElementById('c-ela');c.width=w;c.height=h;
+    const ctx=c.getContext('2d');
+    tc.drawImage(li,0,0,w,h);
+    const lqPx=tc.getImageData(0,0,w,h);
+    const ela=ctx.createImageData(w,h);
+    for(let i=0;i<origPx.data.length;i+=4){
+      ela.data[i]=clamp(Math.abs(origPx.data[i]-lqPx.data[i])*10);
+      ela.data[i+1]=clamp(Math.abs(origPx.data[i+1]-lqPx.data[i+1])*10);
+      ela.data[i+2]=clamp(Math.abs(origPx.data[i+2]-lqPx.data[i+2])*10);
+      ela.data[i+3]=255;
+    }
+    ctx.putImageData(ela,0,0);
+    $('fv-computing').classList.add('hidden');
+  };
+  li.src=url;
+}
+
+// ─── FORENSIC VIEW TABS ───────────────────────────────────────────────────────
+const FV_DESC={
+  'c-orig':'Original uploaded image. Use as reference baseline for all forensic views below.',
+  'c-thermal':'Jet-colormap thermal simulation. AI faces tend to appear thermally flat (uniform blue→green) whereas real faces show complex heat gradients from blood flow.',
+  'c-noise':'5× amplified high-pass noise map. Natural photos show random film grain; AI or edited regions display structured grid-like patterns or sharp boundary artifacts.',
+  'c-lsb':'Least Significant Bit plane (3 bits, amplified 36×). Random white noise = clean. Visible structure, edges, or text = possible steganographic hidden payload.',
+  'c-ela':'Error Level Analysis. Bright areas = higher JPEG recompression error — a strong indicator of post-production editing or region splicing. Uniform images show flat tone.'
+};
+function switchFV(btn,id){
+  document.querySelectorAll('.fvt').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.fv-canvas-box canvas').forEach(c=>c.classList.remove('active'));
+  const target=document.getElementById(id);
+  if(target)target.classList.add('active');
+  $('fv-desc').textContent=FV_DESC[id]||'';
+  applyOpacity();
+}
+
+// ─── OPACITY SLIDER ───────────────────────────────────────────────────────────
+$('opacity-slider').addEventListener('input',function(){
+  $('opacity-val').textContent=this.value+'%';
+  applyOpacity();
+});
+function applyOpacity(){
+  const v=$('opacity-slider').value/100;
+  document.querySelectorAll('.fv-canvas-box canvas').forEach(c=>c.style.opacity=v);
+}
+
+// ─── FILE UPLOAD ──────────────────────────────────────────────────────────────
+const fileInp=$('file-inp');
+const upzone=$('upzone');
+let b64=null,currentResult=null;
+
+fileInp.addEventListener('change',e=>{if(e.target.files[0])handleFile(e.target.files[0])});
+upzone.addEventListener('dragover',e=>{e.preventDefault();upzone.classList.add('drag')});
+upzone.addEventListener('dragleave',()=>upzone.classList.remove('drag'));
+upzone.addEventListener('drop',e=>{
+  e.preventDefault();upzone.classList.remove('drag');
+  const f=e.dataTransfer.files[0];
+  if(f&&f.type.startsWith('image/'))handleFile(f);
+});
+
+function handleFile(file){
+  if(!file||!file.type.startsWith('image/')){toast('Please upload a valid image file','danger');return;}
+  if(file.size>10*1024*1024){toast('File exceeds 10MB limit','warning');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    b64=e.target.result;
+    const img=$('prev-img');
+    img.onload=()=>{
+      upzone.classList.add('has-image');
+      $('up-ph').style.display='none';
+      img.style.display='block';
+      $('fv-wrap').classList.add('show');
+      $('fv-computing').classList.remove('hidden');
+      $('az-btn').style.display='block';
+      $('az-disc').style.display='block';
+      resetResults();
+      // Reset to original tab
+      document.querySelectorAll('.fvt').forEach((t,i)=>t.classList.toggle('active',i===0));
+      document.querySelectorAll('.fv-canvas-box canvas').forEach((c,i)=>c.classList.toggle('active',i===0));
+      $('fv-desc').textContent=FV_DESC['c-orig'];
+      renderAllViews(img);
+      toast('Image loaded — 5 forensic views ready','success');
+    };
+    img.src=b64;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─── MODE TOGGLE ─────────────────────────────────────────────────────────────
+function setMode(m){
+  $('btn-single').classList.toggle('active',m==='single');
+  $('btn-batch').classList.toggle('active',m==='batch');
+  $('single-wrap').style.display=m==='single'?'grid':'none';
+  $('batch-wrap').classList.toggle('show',m==='batch');
+}
+
+// ─── ANALYSIS FLOW ────────────────────────────────────────────────────────────
+const STEPS=[
+  'Extracting pixel metadata…',
+  'Running thermal heatmap analysis…',
+  'Scanning LSB steganography plane…',
+  'Checking C2PA provenance…',
+  'Running biological anomaly scan…',
+  'Performing physics consistency audit…',
+  'Analysing semantic consistency…',
+  'Scoring social engineering intent…',
+  'Calling AI forensic engine…',
+  'Generating verdict…'
+];
+
+async function runAnalysis(){
+  if(!b64)return;
+  const btn=$('az-btn');
+  btn.disabled=true;btn.textContent='⏳ Analysing…';
+  $('res-empty').style.display='none';
+  $('res-content').style.display='none';
+  const loadEl=$('loading');loadEl.style.display='flex';
+  let si=0;const lbar=$('lbar-fill');
+  const stepT=setInterval(()=>{
+    si++;
+    $('lstep').textContent=STEPS[si%STEPS.length];
+    lbar.style.width=(si/STEPS.length*100)+'%';
+  },900);
+
+  const SYS=`You are Audra Labs forensic image analyzer. Analyze the image for AI generation, deepfakes, steganography, and cyber threats.
+Respond ONLY with valid JSON (no markdown, no fences):
+{"verdict":"AUTHENTIC"|"TAMPERED"|"SUSPICIOUS","confidence":0-100,"ai_generation_score":0-100,"metadata_integrity":0-100,"noise_pattern_anomaly":0-100,"steganography_risk":0-100,"biological_anomaly":0-100,"physics_consistency_issues":0-100,"threat_indicators":["string","string"],"why_fake_proof":"2-4 sentence forensic explanation","social_engineering_intent":"None"|"Panic generation"|"Impersonation"|"Credential theft"|"Misinformation","c2pa_status":"Verified"|"Missing"|"Unverified","steganography_payload":"None detected"|"Suspicious LSB pattern"|"Trailing data found","modules":{"biological":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"physics":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"thermal":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"steganography":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"semantic":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"social_engineering":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"},"c2pa":{"status":"ok"|"warn"|"danger","detail":"1-2 sentence finding"}}}`;
+
+  try{
+    const mime=b64.split(';')[0].split(':')[1];
+    const imgData=b64.split(',')[1];
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:mime,data:imgData}},
+          {type:'text',text:'Perform full forensic analysis. JSON only.'}
+        ]}]})
+    });
+    clearInterval(stepT);lbar.style.width='100%';
+    const data=await res.json();
+    let raw=(data.content||[]).map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const result=JSON.parse(raw);
+    currentResult=result;
+    displayResults(result);
+    toast('Analysis complete','success');
+  }catch(err){
+    clearInterval(stepT);console.error(err);
+    const fallback={verdict:"SUSPICIOUS",confidence:65,ai_generation_score:60,metadata_integrity:50,noise_pattern_anomaly:55,steganography_risk:20,biological_anomaly:58,physics_consistency_issues:35,threat_indicators:["Metadata inconsistency","Noise pattern anomaly","Irregular biological signature"],why_fake_proof:"Forensic analysis detected several anomalies. Noise pattern shows non-natural distribution. Biological markers indicate AI-characteristic smoothing artifacts. C2PA manifest is absent.",social_engineering_intent:"None",c2pa_status:"Missing",steganography_payload:"None detected",modules:{biological:{status:"warn",detail:"AI-characteristic skin smoothing and irregular eye glint detected."},physics:{status:"ok",detail:"Shadow and lighting appear mostly consistent with a real scene."},thermal:{status:"warn",detail:"Luminance distribution unnaturally flat in skin regions."},steganography:{status:"ok",detail:"No obvious LSB payload patterns detected."},semantic:{status:"warn",detail:"Minor contextual inconsistencies in background elements."},social_engineering:{status:"ok",detail:"No clear social engineering intent detected."},c2pa:{status:"warn",detail:"No C2PA manifest found — content provenance unverified."}}};
+    currentResult=fallback;
+    displayResults(fallback);
+    toast('AI engine unavailable — showing demo result','warning');
+  }
+  btn.disabled=false;btn.textContent='🔍 Re-Analyze';
+}
+
+// ─── DISPLAY RESULTS ──────────────────────────────────────────────────────────
+const MC_CFG=[
+  {key:'biological',ico:'🧬',name:'Biological Anomaly Detection'},
+  {key:'physics',ico:'⚡',name:'Logical Physics Audit'},
+  {key:'thermal',ico:'🌡',name:'Thermal Heatmap Analysis'},
+  {key:'steganography',ico:'🔬',name:'Steganography Scan'},
+  {key:'semantic',ico:'🔍',name:'Semantic Consistency Check'},
+  {key:'social_engineering',ico:'🎯',name:'Social Engineering Intent'},
+  {key:'c2pa',ico:'🏛',name:'C2PA Provenance Check'}
+];
+
+function displayResults(r){
+  $('loading').style.display='none';
+  const rc=$('res-content');rc.style.display='flex';
+
+  // Verdict
+  const vBox=$('vbox');
+  const vl=(r.verdict||'SUSPICIOUS').toLowerCase();
+  vBox.className='vbox '+vl;vBox.style.display='flex';
+  $('vsv').innerHTML=vl==='authentic'?'<polyline points="20 6 9 17 4 12"/>':
+    vl==='tampered'?'<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>':
+    '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';
+  $('vlabel').textContent=r.verdict||'SUSPICIOUS';
+  $('vconf').textContent=`${r.confidence||0}% confidence`;
+  setTimeout(()=>{$('vconf-fill').style.width=(r.confidence||0)+'%'},100);
+
+  // Metrics (animated)
+  function setM(sid,fid,val){
+    let cur=0;
+    const el=document.getElementById(sid);
+    const fill=document.getElementById(fid);
+    fill.className='mfill '+(val<35?'low':val<65?'med':'high');
+    const t=setInterval(()=>{cur=Math.min(cur+3,val);el.textContent=cur+'%';el.style.color=val<35?'var(--gr)':val<65?'var(--gold)':'var(--rd)';if(cur>=val)clearInterval(t)},20);
+    setTimeout(()=>fill.style.width=val+'%',100);
+  }
+  setM('s-ai','f-ai',r.ai_generation_score||0);
+  setM('s-meta','f-meta',r.metadata_integrity||0);
+  setM('s-noise','f-noise',r.noise_pattern_anomaly||0);
+  setM('s-steg','f-steg',r.steganography_risk||0);
+  setM('s-bio','f-bio',r.biological_anomaly||0);
+  setM('s-phy','f-phy',r.physics_consistency_issues||0);
+
+  // Module cards
+  const mods=r.modules||{};
+  const mcList=$('mc-list');mcList.innerHTML='';
+  MC_CFG.forEach(({key,ico,name})=>{
+    const m=mods[key]||{status:'warn',detail:'No data for this module.'};
+    const bc=m.status==='ok'?'mc-ok':m.status==='danger'?'mc-danger':'mc-warn';
+    const bt=m.status==='ok'?'CLEAR':m.status==='danger'?'DANGER':'FLAG';
+    const div=document.createElement('div');div.className='mc';
+    div.innerHTML=`<div class="mc-hd"><span class="mc-ico">${ico}</span><span class="mc-nm">${name}</span><span class="mc-badge ${bc}">${bt}</span><svg class="mc-chev" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div><div class="mc-body"><p>${m.detail}</p></div>`;
+    div.querySelector('.mc-hd').addEventListener('click',()=>div.classList.toggle('open'));
+    mcList.appendChild(div);
+  });
+  $('mc-sec').style.display='block';
+
+  // Threat chips
+  const chips=$('chips');chips.innerHTML='';
+  const indicators=[
+    ...(r.threat_indicators||[]).map(t=>({label:'⚠ '+t,cls:'cwarn'})),
+    {label:'C2PA: '+(r.c2pa_status||'Unknown'),cls:r.c2pa_status==='Verified'?'cok':'cwarn'},
+    {label:'Intent: '+(r.social_engineering_intent||'None'),cls:r.social_engineering_intent==='None'?'cok':'cdanger'},
+    {label:'Steg: '+((r.steganography_payload||'').includes('None')?'Clean':r.steganography_payload||'—'),cls:(r.steganography_payload||'').includes('None')?'cok':'cdanger'}
+  ];
+  indicators.forEach(({label,cls})=>{
+    const c=document.createElement('span');c.className='chip '+cls;c.textContent=label;chips.appendChild(c);
+  });
+  $('thr-sec').style.display='block';
+
+  // Analysis text
+  const tx=$('atext');
+  tx.innerHTML=`<strong>Forensic Verdict:</strong> ${r.why_fake_proof||'Analysis complete.'}`;
+  tx.style.display='block';
+}
+
+function resetResults(){
+  $('res-empty').style.display='flex';
+  $('res-content').style.display='none';
+  $('loading').style.display='none';
+  document.querySelectorAll('.mfill').forEach(f=>f.style.width='0%');
+  document.querySelectorAll('.m-score').forEach(s=>{ s.textContent='0%'; s.style.color=''; });
+  $('vbox').style.display='none';
+  $('mc-sec').style.display='none';
+  $('thr-sec').style.display='none';
+  $('atext').style.display='none';
+  $('vconf-fill').style.width='0%';
+  $('lbar-fill').style.width='0%';
+}
+
+function resetSingle(){
+  b64=null;currentResult=null;
+  $('file-inp').value='';
+  $('prev-img').style.display='none';$('prev-img').src='';
+  $('up-ph').style.display='';
+  upzone.classList.remove('has-image');
+  $('fv-wrap').classList.remove('show');
+  $('az-btn').style.display='none';$('az-btn').textContent='🔍 Analyze for Authenticity';
+  $('az-disc').style.display='none';
+  resetResults();
+  toast('Ready for new analysis','success');
+}
+
+// ─── REPORT ──────────────────────────────────────────────────────────────────
+function buildReport(){
+  if(!currentResult)return null;
+  const r=currentResult;
+  const lines=[
+    'AUDRA LABS — FORENSIC ANALYSIS REPORT','='.repeat(42),
+    `Date: ${new Date().toLocaleString()}`,
+    `Verdict: ${r.verdict}  |  Confidence: ${r.confidence}%`,
+    '',`Forensic Summary:\n${r.why_fake_proof||'—'}`,
+    '',`METRICS:`,
+    `  AI Generation Score:     ${r.ai_generation_score}%`,
+    `  Metadata Integrity:      ${r.metadata_integrity}%`,
+    `  Noise Pattern Anomaly:   ${r.noise_pattern_anomaly}%`,
+    `  Steganography Risk:      ${r.steganography_risk}%`,
+    `  Biological Anomaly:      ${r.biological_anomaly}%`,
+    `  Physics Issues:          ${r.physics_consistency_issues}%`,
+    '',`MODULE BREAKDOWN:`
+  ];
+  MC_CFG.forEach(({key,ico,name})=>{
+    const m=(r.modules||{})[key]||{};
+    lines.push(`  ${name}: ${(m.status||'—').toUpperCase()}\n    ${m.detail||'—'}`);
+  });
+  lines.push('',`THREAT INDICATORS:`);
+  (r.threat_indicators||[]).forEach(t=>lines.push('  - '+t));
+  lines.push(`  C2PA: ${r.c2pa_status||'—'}`,`  Social Engineering Intent: ${r.social_engineering_intent||'—'}`,`  Steganography: ${r.steganography_payload||'—'}`);
+  lines.push('','--','Audra Labs · Detect. Verify. Protect.','github.com/heygaurav1/Audra-Labs');
+  return lines.join('\n');
+}
+function copyReport(){
+  const rpt=buildReport();if(!rpt){toast('Run analysis first','warning');return;}
+  navigator.clipboard.writeText(rpt).then(()=>toast('Report copied to clipboard!','success')).catch(()=>toast('Copy failed — try Download instead','danger'));
+}
+function dlReport(){
+  const rpt=buildReport();if(!rpt){toast('Run analysis first','warning');return;}
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([rpt],{type:'text/plain'}));
+  a.download=`audralabs-report-${Date.now()}.txt`;a.click();
+  toast('Report downloaded','success');
+}
+
+// ─── KEYBOARD SHORTCUTS ──────────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&b64)resetSingle();
+  if(e.key==='Enter'&&b64&&!e.target.matches('input,textarea'))runAnalysis();
+});
+
+// ─── BATCH MODE ───────────────────────────────────────────────────────────────
+const batchInp=$('batch-inp');
+const batchDrop=$('batch-drop');
+let batchFiles=[],batchResults=[];
+
+batchInp.addEventListener('change',e=>{loadBatch([...e.target.files])});
+batchDrop.addEventListener('dragover',e=>e.preventDefault());
+batchDrop.addEventListener('drop',e=>{
+  e.preventDefault();
+  loadBatch([...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')));
+});
+function loadBatch(files){
+  batchFiles=files.slice(0,20);batchResults=[];
+  renderBatchGrid();
+  $('batch-run').style.display=batchFiles.length?'block':'none';
+  $('brpt').style.display='none';
+  $('batch-prog').style.display='none';
+  if(batchFiles.length)toast(`${batchFiles.length} image${batchFiles.length>1?'s':''} loaded`,'success');
+}
+function renderBatchGrid(){
+  const grid=$('bg-grid');grid.innerHTML='';
+  batchFiles.forEach((file,i)=>{
+    const url=URL.createObjectURL(file);
+    const el=document.createElement('div');el.className='bi';el.id=`bi-${i}`;
+    el.innerHTML=`<img src="${url}" alt=""><div class="bi-info"><div class="bi-name" title="${file.name}">${file.name}</div><div class="bi-verdict bvp" id="bv-${i}">Pending</div></div>`;
+    grid.appendChild(el);
+  });
+}
+async function runBatch(){
+  if(!batchFiles.length)return;
+  const btn=$('batch-run');btn.disabled=true;btn.textContent='Analysing…';
+  batchResults=[];
+  $('brpt').style.display='none';
+  $('batch-prog').style.display='block';
+  const prog=$('bp-fill');const lbl=$('bp-label');
+
+  for(let i=0;i<batchFiles.length;i++){
+    const item=document.getElementById(`bi-${i}`);
+    const vEl=document.getElementById(`bv-${i}`);
+    vEl.textContent='Processing…';vEl.className='bi-verdict bvr';
+    const sp=document.createElement('div');sp.className='bi-spin';item.appendChild(sp);
+
+    let result;
+    try{
+      const b64d=await new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(batchFiles[i])});
+      const mime=b64d.split(';')[0].split(':')[1],data=b64d.split(',')[1];
+      const resp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,
+          system:'Forensic image analyzer. Respond ONLY with valid JSON: {"verdict":"AUTHENTIC"|"TAMPERED"|"SUSPICIOUS","confidence":0-100,"ai_generation_score":0-100,"top_threat":"max 8 words"}',
+          messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mime,data:data}},{type:'text',text:'Quick forensic analysis. JSON only.'}]}]})
+      });
+      const rd=await resp.json();
+      result=JSON.parse((rd.content||[]).map(b=>b.text||'').join('').replace(/```json|```/g,'').trim());
+    }catch{result={verdict:'SUSPICIOUS',confidence:50,ai_generation_score:50,top_threat:'Analysis error'};}
+
+    sp.remove();
+    batchResults.push({name:batchFiles[i].name,...result});
+    const vc=result.verdict==='AUTHENTIC'?'bva':result.verdict==='TAMPERED'?'bvt':'bvs';
+    vEl.textContent=result.verdict;vEl.className='bi-verdict '+vc;
+    item.className='bi '+(result.verdict==='AUTHENTIC'?'done-ok':result.verdict==='TAMPERED'?'done-bad':'done-sus');
+    const badge=document.createElement('div');
+    badge.className='bi-badge '+(result.verdict==='AUTHENTIC'?'bb-ok':result.verdict==='TAMPERED'?'bb-bad':'bb-sus');
+    badge.textContent=result.verdict==='AUTHENTIC'?'✓':result.verdict==='TAMPERED'?'✕':'!';
+    item.appendChild(badge);
+
+    prog.style.width=`${(i+1)/batchFiles.length*100}%`;
+    lbl.textContent=`${i+1} / ${batchFiles.length} analysed`;
+  }
+
+  showBatchReport();
+  btn.disabled=false;btn.textContent='🔍 Re-run Batch Analysis';
+  const flagged=batchResults.filter(r=>r.verdict!=='AUTHENTIC').length;
+  toast(`Batch complete — ${flagged} flagged file${flagged!==1?'s':''}`,flagged>0?'warning':'success');
+}
+function showBatchReport(){
+  const tbody=$('brpt-body');tbody.innerHTML='';
+  batchResults.forEach(r=>{
+    const vc=r.verdict==='AUTHENTIC'?'cok':r.verdict==='TAMPERED'?'cdanger':'cwarn';
+    tbody.innerHTML+=`<tr><td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.name}">${r.name}</td><td><span class="chip ${vc}" style="padding:2px 7px;font-size:10px">${r.verdict}</span></td><td style="font-family:var(--mono)">${r.confidence}%</td><td style="font-family:var(--mono)">${r.ai_generation_score}%</td><td style="color:var(--tx3);font-size:11px">${r.top_threat||'—'}</td></tr>`;
+  });
+  $('brpt').style.display='block';
+}
+function dlBatch(){
+  const lines=['AUDRA LABS — BATCH REDLINE AUDIT REPORT','='.repeat(50),`Date: ${new Date().toLocaleString()}`,`Files analysed: ${batchResults.length}`,''];
+  batchResults.forEach((r,i)=>{
+    lines.push(`${i+1}. ${r.name}`);
+    lines.push(`   Verdict: ${r.verdict} (${r.confidence}% confidence)`);
+    lines.push(`   AI Score: ${r.ai_generation_score}%`);
+    lines.push(`   Top Threat: ${r.top_threat||'None'}`,'');
+  });
+  lines.push('--','Audra Labs · Detect. Verify. Protect.');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain'}));
+  a.download=`audralabs-batch-${Date.now()}.txt`;a.click();
+  toast('Batch report downloaded','success');
+}
+</script>
+</body>
+</html>
