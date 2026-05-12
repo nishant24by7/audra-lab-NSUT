@@ -3,7 +3,7 @@ Audra Labs — Forensic Image Authenticity Analyzer
 Detect. Verify. Protect.
 AI-powered forensic image analysis to uncover deepfakes, manipulation, steganography, and cyber threats in under 5 seconds.
 
-WEBSITE LiNK:- https://claude.ai/public/artifacts/201fad9c-4b02-4d5b-8878-faef5ee96234
+WEBSITE LiNK:- https://audralabs-eight.vercel.app/
 <img width="1912" height="977" alt="Screenshot 2026-05-12 152057" src="https://github.com/user-attachments/assets/0161a011-6d37-4810-8281-ebd30958c716" />
 <img width="1906" height="727" alt="image" src="https://github.com/user-attachments/assets/993d2dd5-42bc-4f6e-b5ca-2fb6eb705490" />
 <img width="1896" height="960" alt="image" src="https://github.com/user-attachments/assets/e5cf5fce-22bd-4218-b8d4-8153f8e622ae" />
